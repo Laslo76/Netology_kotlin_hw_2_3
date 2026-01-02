@@ -1,16 +1,20 @@
+import kotlin.math.roundToInt
+
 fun main(){
-    var amaunt: Int = 1000
+    val amount: Int = 15000
     val discountPercentage: Double = 0.05
-    var dearCustomer: Boolean = false
+    val dearCustomer: Boolean = true
     val discountPercentageDear: Double = 0.01
 
-    if (amaunt > 1_000 && amaunt <= 10_000) {
-       amaunt -= 100
-    } else if (amaunt > 10_000) {
-        amaunt = (amaunt * (1 - discountPercentage)).toInt()
+    var result: Int = amount
+
+    if (amount > 10_000) {
+        result = (amount * (1 - discountPercentage)).roundToInt() 
+    } else if (amount > 1_000) {
+        result = amount.minus(100)
     }
     if (dearCustomer) {
-        amaunt = (Math.round(amaunt * (1 - discountPercentageDear))).toInt()
+        result = (result * (1 - discountPercentageDear)).roundToInt()
     }
-    println("Итоговая стоимость покупки: $amaunt")
+    println("Итоговая стоимость покупки: $result")
 }
