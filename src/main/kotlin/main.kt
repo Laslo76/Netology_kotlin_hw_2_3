@@ -6,15 +6,16 @@ fun main(){
     val dearCustomer: Boolean = true
     val discountPercentageDear: Double = 0.01
 
-    var result: Int = amount
-
+    var preliminaryDiscount = 0.0
     if (amount > 10_000) {
-        result = (amount * (1 - discountPercentage)).roundToInt() 
+        preliminaryDiscount = amount * discountPercentage
     } else if (amount > 1_000) {
-        result = amount.minus(100)
+        preliminaryDiscount = 100.0
     }
-    if (dearCustomer) {
-        result = (result * (1 - discountPercentageDear)).roundToInt()
-    }
+    val preliminaryResult = (amount - preliminaryDiscount).roundToInt()
+
+    val dearDiscount = if (dearCustomer) preliminaryResult * discountPercentageDear else 0.0
+    val result = (preliminaryResult - dearDiscount).roundToInt()
+
     println("Итоговая стоимость покупки: $result")
 }
