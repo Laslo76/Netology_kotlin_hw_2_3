@@ -11,10 +11,9 @@ fun main(){
         (amount > 1_000) -> 100.0
         else -> 0.0
     }
-    val preliminaryResult = (amount - preliminaryDiscount).roundToInt()
-
+    val preliminaryResult = amount - preliminaryDiscount
     val dearDiscount = if (dearCustomer) preliminaryResult * discountPercentageDear else 0.0
     val result = (preliminaryResult - dearDiscount).roundToInt()
 
-    println("Итоговая стоимость покупки: $result")
+    println("Итоговая стоимость покупки: $result руб.")
 }
